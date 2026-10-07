@@ -1,0 +1,631 @@
+:root {
+    --ce: #74ACDF;
+    --ce2: #cfe3f5;
+    --bl: #fffdf6;
+    --az: #0d2240;
+    --ne: #050505;
+    --or: #e0b44c;
+
+    --d: 'Anton', 'Impact', 'Arial Narrow', sans-serif;
+    --s: 'Libre Baskerville', Georgia, serif;
+
+    box-sizing: border-box;
+
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: env(safe-area-inset-top, 0px);
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    background: var(--bl);
+    color: var(--az);
+
+    font-family: var(--s);
+
+    overflow-x: hidden;
+
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--d);
+    font-weight: 400;
+
+    text-transform: uppercase;
+
+    line-height: 0.95;
+}
+
+:focus-visible {
+    outline: 3px solid var(--or);
+    outline-offset: 3px;
+}
+
+section {
+    padding: 16vh 6vw;
+}
+
+.rv {
+    opacity: 0;
+    transition: opacity 1.4s ease;
+}
+
+.rv.in {
+    opacity: 1;
+}
+
+.ph {
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        repeating-linear-gradient(
+            135deg,
+            var(--ce2) 0 14px,
+            #fff 14px 28px
+        );
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: flex-end;
+
+    min-height: 200px;
+}
+
+.ph i {
+    font: italic 0.95rem var(--s);
+
+    background: var(--bl);
+    color: var(--az);
+
+    padding: 0.2em 0.7em;
+
+    margin: 0.6rem;
+}
+
+.zoom {
+    transform: scale(1.06);
+
+    transition:
+        transform 6s ease-out;
+}
+
+.in .zoom,
+.zoom.in {
+    transform: scale(1);
+}
+
+#hero {
+    min-height: 100svh;
+
+    background: var(--ce);
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    gap: 1.5rem;
+
+    position: relative;
+}
+
+#hero h1 {
+    font-size: clamp(3rem, 12vw, 10rem);
+
+    color: var(--bl);
+
+    text-shadow: 4px 4px 0 var(--az);
+
+    max-width: 12ch;
+
+    animation: fade 2.5s ease both;
+}
+
+.date {
+    font:
+        400 clamp(1.5rem, 4.5vw, 2.8rem)
+        var(--d);
+
+    letter-spacing: 0.06em;
+
+    animation:
+        fade 2.5s 1s ease both;
+}
+
+.mem {
+    height: 2.2em;
+
+    font:
+        italic clamp(1.2rem, 3vw, 1.8rem)
+        var(--s);
+
+    display: grid;
+    place-items: center;
+}
+
+.mem span {
+    grid-area: 1 / 1;
+
+    opacity: 0;
+
+    animation:
+        mem 20s infinite;
+
+    animation-delay:
+        calc(var(--i) * 4s + 3s);
+}
+
+@keyframes mem {
+
+    0% {
+        opacity: 0;
+    }
+
+    4%,
+    16% {
+        opacity: 1;
+    }
+
+    20%,
+    100% {
+        opacity: 0;
+    }
+
+}
+
+#hero .ahora {
+    font:
+        400 clamp(1.4rem, 3.5vw, 2.2rem)
+        var(--d);
+
+    text-transform: uppercase;
+
+    animation:
+        fade 2.5s 3s ease both;
+}
+
+.go {
+    position: absolute;
+
+    bottom: 4vh;
+
+    background: none;
+
+    border: 2px solid var(--az);
+
+    color: var(--az);
+
+    padding: 0.7rem 1.6rem;
+
+    font:
+        400 1.1rem var(--d);
+
+    letter-spacing: 0.1em;
+
+    cursor: pointer;
+
+    text-decoration: none;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+.go:hover {
+    background: var(--az);
+    color: var(--bl);
+}
+
+@keyframes fade {
+
+    from {
+        opacity: 0;
+    }
+
+}
+
+#hist h2.t {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+
+    margin-bottom: 10vh;
+}
+
+.pg {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 6vw;
+
+    align-items: center;
+
+    max-width: 1100px;
+
+    margin:
+        0 auto 18vh;
+}
+
+.pg:nth-child(odd) .pol {
+    order: 2;
+}
+
+.pol {
+    background: #fff;
+
+    padding: 14px 14px 0;
+
+    box-shadow:
+        0 6px 24px #0d224022;
+
+    transform:
+        rotate(var(--r, -1.5deg));
+}
+
+.pol .ph {
+    aspect-ratio: 4 / 3;
+}
+
+.pol small {
+    display: block;
+
+    font:
+        italic 0.85rem var(--s);
+
+    padding: 0.7rem 0;
+}
+
+.yr {
+    font:
+        400 clamp(1.4rem, 3vw, 2rem)
+        var(--d);
+
+    color: var(--ce);
+}
+
+.pg blockquote {
+    margin:
+        0.3rem 0 1rem;
+
+    font:
+        400 clamp(2.4rem, 6.5vw, 5rem)
+        var(--d);
+
+    text-transform: uppercase;
+
+    line-height: 0.95;
+}
+
+.pg p.ex {
+    max-width: 38ch;
+
+    font-size: 1.05rem;
+}
+
+#solo {
+    background: var(--az);
+
+    color: var(--bl);
+
+    text-align: center;
+}
+
+#solo h2 {
+    font-size:
+        clamp(2.2rem, 7vw, 5.5rem);
+
+    max-width: 14ch;
+
+    margin:
+        0 auto 1.5rem;
+}
+
+#solo h2.b {
+    color: var(--ce);
+
+    margin-bottom: 8vh;
+}
+
+.col {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    grid-auto-rows: 20vh;
+
+    gap: 10px;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+}
+
+.col .ph {
+    min-height: 0;
+
+    height: 100%;
+}
+
+.col .a {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.col .b2 {
+    grid-row: span 2;
+}
+
+.col .c {
+    grid-column: span 2;
+}
+
+#d18 {
+    background: var(--ne);
+
+    color: var(--bl);
+
+    text-align: center;
+}
+
+#d18 .l {
+    min-height: 60vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 2rem;
+}
+
+#d18 h2 {
+    font-size:
+        clamp(2.2rem, 8vw, 6rem);
+
+    max-width: 14ch;
+}
+
+#d18 .y {
+    color: var(--ce);
+}
+
+#d18 .st {
+    font-size:
+        clamp(3rem, 12vw, 9rem);
+
+    color: var(--or);
+
+    letter-spacing: 0.12em;
+}
+
+.fest {
+    max-width: 1100px;
+
+    margin:
+        6vh auto 0;
+
+    display: grid;
+
+    gap: 12px;
+
+    grid-template-columns:
+        2fr 1fr;
+}
+
+.fest .ph {
+    height: 32vh;
+
+    min-height: 0;
+}
+
+.fest .w {
+    grid-column: 1 / -1;
+
+    height: 56vh;
+}
+
+.fest .ph:before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            transparent 60%,
+            #0008
+        );
+}
+
+#grito {
+    background: var(--ce);
+
+    text-align: center;
+
+    color: var(--az);
+
+    overflow: hidden;
+}
+
+.g {
+    font:
+        400 var(--fs)
+        var(--d);
+
+    line-height: 0.9;
+
+    text-transform: uppercase;
+
+    color: var(--az);
+
+    opacity: 0;
+
+    transition:
+        opacity 1.2s;
+
+    transition-delay:
+        calc(var(--n) * 0.5s);
+}
+
+.in .g {
+    opacity: var(--o);
+}
+
+.g:last-of-type {
+    color: var(--bl);
+
+    text-shadow:
+        3px 3px 0 var(--az);
+}
+
+#grito .f {
+    margin-top: 10vh;
+
+    font:
+        italic clamp(1.3rem, 3vw, 2rem)
+        var(--s);
+}
+
+#fin {
+    background: var(--ne);
+
+    color: var(--bl);
+
+    height: 260vh;
+
+    padding: 0;
+}
+
+#stage {
+    position: sticky;
+
+    top: 0;
+
+    height: 100svh;
+
+    display: grid;
+
+    place-items: center;
+
+    text-align: center;
+
+    padding: 0 5vw;
+}
+
+#ft {
+    font:
+        400 clamp(3rem, 13vw, 10rem)
+        var(--d);
+
+    text-transform: uppercase;
+
+    line-height: 0.95;
+
+    transition:
+        opacity 1.4s;
+}
+
+#ft.fin {
+    color: var(--bl);
+}
+
+#ft.fin em {
+    font-style: normal;
+
+    color: var(--ce);
+}
+
+#ft small {
+    display: block;
+
+    font:
+        italic 400 clamp(1.1rem, 3vw, 2rem)
+        var(--s);
+
+    text-transform: none;
+
+    margin-bottom: 1rem;
+
+    color: var(--ce2);
+}
+
+@media (max-width: 760px) {
+
+    .pg {
+        grid-template-columns: 1fr;
+
+        margin-bottom: 12vh;
+    }
+
+    .pg:nth-child(odd) .pol {
+        order: 0;
+    }
+
+    .col {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        grid-auto-rows: 18vh;
+    }
+
+    .fest {
+        grid-template-columns: 1fr;
+    }
+
+    .fest .w {
+        height: 40vh;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .rv,
+    .g {
+        opacity: 1;
+    }
+
+    .mem span:first-child {
+        opacity: 1;
+    }
+
+    .zoom {
+        transform: none;
+    }
+
+}
